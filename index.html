@@ -7,77 +7,329 @@
 <title>Red Bank Outdoor Academy — Renderings</title>
 <style>
 *{box-sizing:border-box}
-:root{--bg:#f7f5f1;--fg:#1c1a17;--mut:#6f6a62;--line:#e0dbd2;--card:#fff;--accent:#8a5a2b;--warn:#9a6b1f}
-@media (prefers-color-scheme:dark){:root{--bg:#14120f;--fg:#efece6;--mut:#9c968c;--line:#2d2823;--card:#1b1815;--accent:#c99456;--warn:#d9a441}}
+:root{
+  --bg:#faf8f4; --fg:#191713; --mut:#6d675e; --faint:#928b80;
+  --line:#e4dfd5; --card:#fff; --accent:#8a5a2b; --warn:#8a6a1f;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#121110;--fg:#efece6;--mut:#9c968c;--faint:#7d766c;--line:#2a2621;
+        --card:#1a1816;--accent:#cd9a5c;--warn:#d9a441;
+        --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.4)}
+}
 html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-header{padding:60px 0 34px;border-bottom:1px solid var(--line)}
-.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 12px;font-weight:600}
-h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 14px;letter-spacing:-.02em}
-header p{color:var(--mut);max-width:62ch;margin:0}
-.meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:26px;font-size:13px;color:var(--mut)}
-.meta b{display:block;color:var(--fg);font-size:14px;font-weight:600;margin-bottom:2px}
-.note{margin:28px 0 0;padding:14px 16px;border-left:3px solid var(--accent);background:var(--card);border-radius:0 6px 6px 0;font-size:14px;color:var(--mut)}
+body{background:var(--bg);color:var(--fg);
+  font:16px/1.65 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+a{color:var(--accent)}
+img{max-width:100%}
+
+header{padding:76px 0 44px}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;font-weight:700}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.04;margin:0 0 16px;letter-spacing:-.03em;font-weight:650}
+header .lede{color:var(--mut);max-width:60ch;margin:0;font-size:17px}
+.meta{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.meta div{padding:16px 26px 16px 0;margin-right:26px;font-size:13px;color:var(--mut);border-right:1px solid var(--line)}
+.meta div:last-child{border-right:0}
+.meta b{display:block;color:var(--fg);font-size:14px;font-weight:650;margin-bottom:1px}
+.note{margin:26px 0 0;padding:15px 18px;border-left:3px solid var(--accent);background:var(--card);
+  border-radius:0 8px 8px 0;font-size:14px;color:var(--mut);box-shadow:var(--shadow)}
 .note b{color:var(--fg)}
 .note.open{border-left-color:var(--warn)}
-section{padding:44px 0;border-bottom:1px solid var(--line)}
-h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 20px;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
-figure{margin:0}
-figure img{width:100%;display:block;border-radius:8px;border:1px solid var(--line);background:var(--card)}
-figcaption{font-size:12px;color:var(--mut);padding:8px 2px 0}
-figcaption b{color:var(--fg);font-weight:600}
-ul{margin:0;padding-left:20px;color:var(--mut);font-size:14px}
-li{margin-bottom:6px}
-footer{padding:36px 0 70px;color:var(--mut);font-size:13px}
-a{color:var(--accent)}
+
+.plates{padding:20px 0 0}
+.plate{display:grid;grid-template-columns:44px minmax(0,1.55fr) minmax(0,1fr);gap:0 30px;
+  padding:46px 0;border-top:1px solid var(--line);align-items:start}
+.plate:first-child{border-top:0}
+@media(max-width:900px){.plate{grid-template-columns:36px minmax(0,1fr);}.sources{grid-column:2}}
+.num{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint);
+  letter-spacing:.08em;padding-top:6px}
+.render img{width:100%;display:block;border-radius:10px;border:1px solid var(--line);
+  background:var(--card);box-shadow:var(--shadow)}
+.render h3{font-size:22px;margin:16px 0 4px;letter-spacing:-.015em;font-weight:650}
+.render p{margin:0;color:var(--mut);font-size:14.5px}
+
+.srclabel{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+  font-weight:700;margin-bottom:12px}
+.srcrow{display:flex;flex-direction:column;gap:16px}
+@media(max-width:900px){.srcrow{flex-direction:row;flex-wrap:wrap}.src{flex:1 1 220px}}
+.src{margin:0}
+.src img{width:100%;display:block;border-radius:7px;border:1px solid var(--line);
+  background:var(--card);filter:saturate(.92)}
+.src figcaption{font-size:12.5px;color:var(--mut);padding:7px 1px 0;line-height:1.45}
+.tag{display:inline-block;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  font-weight:700;color:var(--accent);border:1px solid var(--line);border-radius:4px;
+  padding:2px 6px;margin-right:7px;vertical-align:1px}
+
+footer{padding:52px 0 84px;color:var(--faint);font-size:13px;border-top:1px solid var(--line);margin-top:20px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <p class="eyebrow">Working Set — August 2026</p>
-  <h1>Red Bank Outdoor Academy</h1>
-  <p>Thirteen renderings of the finished building, built on the as-built steel
-     structure, the architect's design, the Northern Cabinets shop drawing and the
-     client's own finish selections.</p>
+  <p class="eyebrow">Working Set &middot; August 2026</p>
+  <h1>Red Bank Outdoor&nbsp;Academy</h1>
+  <p class="lede">Thirteen renderings of the finished building. Each one is shown beside
+     the material it was built from &mdash; the as-built photography, the architect's
+     design, the cabinet shop drawing, the client's own plan and finish selections.</p>
   <div class="meta">
-    <div><b>Location</b>Tehama County, California</div>
-    <div><b>Structure</b>Steel frame, two storeys</div>
-    <div><b>Stage</b>Shell complete, interior in progress</div>
-    <div><b>Images</b>13</div>
+    <div><b>Tehama County</b>California</div>
+    <div><b>Steel frame</b>Two storeys</div>
+    <div><b>Shell complete</b>Interior in progress</div>
+    <div><b>13</b>Renderings</div>
   </div>
   <p class="note"><b>These are renderings, not photographs.</b> Materials reflect
      selections on record; exact colors, grain and fixtures will vary from the
      finished build.</p>
-  <p class="note open"><b>Working set — under review.</b> The loft and the placement
+  <p class="note open"><b>Working set &mdash; under review.</b> The loft and the placement
      of the game room are being revised, and the ground-floor ceiling treatment is
-     unconfirmed. Frames 6, 7 and 10 will change.</p>
+     unconfirmed. Frames 06, 07 and 10 will change.</p>
 </header>
 
-<section>
-  <h2>Renderings</h2>
-  <div class="grid">
-    <figure><a href="assets/photos/01-approach.jpg"><img src="assets/photos/01-approach.jpg" alt="Approach — Up the drive past the lone conifer" loading="lazy"></a><figcaption><b>1 · Approach</b> — Up the drive past the lone conifer</figcaption></figure>
-    <figure><a href="assets/photos/02-pavilion.jpg"><img src="assets/photos/02-pavilion.jpg" alt="Pavilion — Timber frame, stone bases, flags on the gable, fire pit beyond" loading="lazy"></a><figcaption><b>2 · Pavilion</b> — Timber frame, stone bases, flags on the gable, fire pit beyond</figcaption></figure>
-    <figure><a href="assets/photos/03-hall-ground.jpg"><img src="assets/photos/03-hall-ground.jpg" alt="Ground Hall — Polished concrete, exposed steel, stair beyond" loading="lazy"></a><figcaption><b>3 · Ground Hall</b> — Polished concrete, exposed steel, stair beyond</figcaption></figure>
-    <figure><a href="assets/photos/04-kitchen.jpg"><img src="assets/photos/04-kitchen.jpg" alt="Kitchen — Built to the Northern Cabinets shop drawing" loading="lazy"></a><figcaption><b>4 · Kitchen</b> — Built to the Northern Cabinets shop drawing</figcaption></figure>
-    <figure><a href="assets/photos/05-range-hood.jpg"><img src="assets/photos/05-range-hood.jpg" alt="Range Hood — Shop-built knotty alder" loading="lazy"></a><figcaption><b>5 · Range Hood</b> — Shop-built knotty alder</figcaption></figure>
-    <figure><a href="assets/photos/06-stair.jpg"><img src="assets/photos/06-stair.jpg" alt="The Stair — Flat-bar rail up to the lodge level" loading="lazy"></a><figcaption><b>6 · The Stair</b> — Flat-bar rail up to the lodge level</figcaption></figure>
-    <figure><a href="assets/photos/07-great-room.jpg"><img src="assets/photos/07-great-room.jpg" alt="Great Room — Blue-stain pine under exposed steel portals" loading="lazy"></a><figcaption><b>7 · Great Room</b> — Blue-stain pine under exposed steel portals</figcaption></figure>
-    <figure><a href="assets/photos/08-fireplace.jpg"><img src="assets/photos/08-fireplace.jpg" alt="Fireplace — Ledgestone, arched stove, television above the mantel" loading="lazy"></a><figcaption><b>8 · Fireplace</b> — Ledgestone, arched stove, television above the mantel</figcaption></figure>
-    <figure><a href="assets/photos/09-dining.jpg"><img src="assets/photos/09-dining.jpg" alt="Dining — A table for ten down the centre" loading="lazy"></a><figcaption><b>9 · Dining</b> — A table for ten down the centre</figcaption></figure>
-    <figure><a href="assets/photos/10-games.jpg"><img src="assets/photos/10-games.jpg" alt="Games — Pool, shuffleboard, poker, elk on pedestals" loading="lazy"></a><figcaption><b>10 · Games</b> — Pool, shuffleboard, poker, elk on pedestals</figcaption></figure>
-    <figure><a href="assets/photos/11-hall.jpg"><img src="assets/photos/11-hall.jpg" alt="Hall — Alder arched doors, crown headers" loading="lazy"></a><figcaption><b>11 · Hall</b> — Alder arched doors, crown headers</figcaption></figure>
-    <figure><a href="assets/photos/12-bedroom.jpg"><img src="assets/photos/12-bedroom.jpg" alt="Bedroom — Under the roof slope" loading="lazy"></a><figcaption><b>12 · Bedroom</b> — Under the roof slope</figcaption></figure>
-    <figure><a href="assets/photos/13-bath.jpg"><img src="assets/photos/13-bath.jpg" alt="Bath — Multicolor slate, river-pebble pan" loading="lazy"></a><figcaption><b>13 · Bath</b> — Multicolor slate, river-pebble pan</figcaption></figure>
-  </div>
-</section>
+<main class="plates">
+  <article class="plate">
+    <div class="num">01</div>
+    <div class="render">
+      <a href="assets/photos/01-approach.jpg" target="_blank" rel="noopener"><img src="assets/photos/01-approach.jpg" alt="Approach — Up the drive past the lone conifer, late afternoon." loading="lazy"></a>
+      <h3>Approach</h3>
+      <p>Up the drive past the lone conifer, late afternoon.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-approach.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-approach.jpg" alt="As built — The same view during construction" loading="lazy"></a>
+          <figcaption><span class="tag">As built</span>The same view during construction</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">02</div>
+    <div class="render">
+      <a href="assets/photos/02-pavilion.jpg" target="_blank" rel="noopener"><img src="assets/photos/02-pavilion.jpg" alt="Pavilion — Timber frame on stone bases, flags on the gable, fire pit beyond." loading="lazy"></a>
+      <h3>Pavilion</h3>
+      <p>Timber frame on stone bases, flags on the gable, fire pit beyond.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-architect.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-architect.jpg" alt="Architect — CMC Architecture design rendering" loading="lazy"></a>
+          <figcaption><span class="tag">Architect</span>CMC Architecture design rendering</figcaption>
+        </figure>
+        <figure class="src">
+          <a href="assets/sources/src-gable-sketch.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-gable-sketch.jpg" alt="Client sketch — Fire pit, flags and stairs on the gable" loading="lazy"></a>
+          <figcaption><span class="tag">Client sketch</span>Fire pit, flags and stairs on the gable</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">03</div>
+    <div class="render">
+      <a href="assets/photos/03-hall-ground.jpg" target="_blank" rel="noopener"><img src="assets/photos/03-hall-ground.jpg" alt="Ground Hall — Polished concrete, exposed steel, the stair beyond." loading="lazy"></a>
+      <h3>Ground Hall</h3>
+      <p>Polished concrete, exposed steel, the stair beyond.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-steel-frame.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-steel-frame.jpg" alt="As built — Steel rigid frames, drywalled between the bents" loading="lazy"></a>
+          <figcaption><span class="tag">As built</span>Steel rigid frames, drywalled between the bents</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">04</div>
+    <div class="render">
+      <a href="assets/photos/04-kitchen.jpg" target="_blank" rel="noopener"><img src="assets/photos/04-kitchen.jpg" alt="Kitchen — Ground floor. Built element for element to the shop drawing." loading="lazy"></a>
+      <h3>Kitchen</h3>
+      <p>Ground floor. Built element for element to the shop drawing.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-cabinet-drawing.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-cabinet-drawing.jpg" alt="Shop drawing — Northern Cabinets — R.B.O. Kitchen Room 1" loading="lazy"></a>
+          <figcaption><span class="tag">Shop drawing</span>Northern Cabinets — R.B.O. Kitchen Room 1</figcaption>
+        </figure>
+        <figure class="src">
+          <a href="assets/sources/src-counters.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-counters.jpg" alt="Finish selection — Black counters, copper apron sink, subway tile" loading="lazy"></a>
+          <figcaption><span class="tag">Finish selection</span>Black counters, copper apron sink, subway tile</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">05</div>
+    <div class="render">
+      <a href="assets/photos/05-range-hood.jpg" target="_blank" rel="noopener"><img src="assets/photos/05-range-hood.jpg" alt="Range Hood — Shop-built knotty alder, tapered with a crown cap." loading="lazy"></a>
+      <h3>Range Hood</h3>
+      <p>Shop-built knotty alder, tapered with a crown cap.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-hood.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-hood.jpg" alt="As built — The hood under fabrication in the millwork shop" loading="lazy"></a>
+          <figcaption><span class="tag">As built</span>The hood under fabrication in the millwork shop</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">06</div>
+    <div class="render">
+      <a href="assets/photos/06-stair.jpg" target="_blank" rel="noopener"><img src="assets/photos/06-stair.jpg" alt="The Stair — Flat-bar rail climbing to the lodge level." loading="lazy"></a>
+      <h3>The Stair</h3>
+      <p>Flat-bar rail climbing to the lodge level.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-stair.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-stair.jpg" alt="As built — The stair from the walkthrough footage" loading="lazy"></a>
+          <figcaption><span class="tag">As built</span>The stair from the walkthrough footage</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">07</div>
+    <div class="render">
+      <a href="assets/photos/07-great-room.jpg" target="_blank" rel="noopener"><img src="assets/photos/07-great-room.jpg" alt="Great Room — Blue-stain pine running unbroken under exposed steel." loading="lazy"></a>
+      <h3>Great Room</h3>
+      <p>Blue-stain pine running unbroken under exposed steel.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-steel-frame.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-steel-frame.jpg" alt="As built — The room before finish" loading="lazy"></a>
+          <figcaption><span class="tag">As built</span>The room before finish</figcaption>
+        </figure>
+        <figure class="src">
+          <a href="assets/sources/src-pine-board.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-pine-board.jpg" alt="Finish selection — The blue-stain pine board itself" loading="lazy"></a>
+          <figcaption><span class="tag">Finish selection</span>The blue-stain pine board itself</figcaption>
+        </figure>
+        <figure class="src">
+          <a href="assets/sources/src-floorplan.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-floorplan.jpg" alt="Client plan — Hand plan of the lodge level" loading="lazy"></a>
+          <figcaption><span class="tag">Client plan</span>Hand plan of the lodge level</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">08</div>
+    <div class="render">
+      <a href="assets/photos/08-fireplace.jpg" target="_blank" rel="noopener"><img src="assets/photos/08-fireplace.jpg" alt="Fireplace — Ledgestone with a stone arch, arched stove, television above." loading="lazy"></a>
+      <h3>Fireplace</h3>
+      <p>Ledgestone with a stone arch, arched stove, television above.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-fireplace.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-fireplace.jpg" alt="Finish selection — “Same rock feature going up the wall, but with a TV in it”" loading="lazy"></a>
+          <figcaption><span class="tag">Finish selection</span>“Same rock feature going up the wall, but with a TV in it”</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">09</div>
+    <div class="render">
+      <a href="assets/photos/09-dining.jpg" target="_blank" rel="noopener"><img src="assets/photos/09-dining.jpg" alt="Dining — A table for ten down the centre of the room." loading="lazy"></a>
+      <h3>Dining</h3>
+      <p>A table for ten down the centre of the room.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-floorplan.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-floorplan.jpg" alt="Client plan — Dining table drawn with ten chairs" loading="lazy"></a>
+          <figcaption><span class="tag">Client plan</span>Dining table drawn with ten chairs</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">10</div>
+    <div class="render">
+      <a href="assets/photos/10-games.jpg" target="_blank" rel="noopener"><img src="assets/photos/10-games.jpg" alt="Games — Pool, shuffleboard, poker, elk on barnwood pedestals." loading="lazy"></a>
+      <h3>Games</h3>
+      <p>Pool, shuffleboard, poker, elk on barnwood pedestals.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-floorplan.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-floorplan.jpg" alt="Client plan — Pool table, shuffleboard, poker table, elk pedestals" loading="lazy"></a>
+          <figcaption><span class="tag">Client plan</span>Pool table, shuffleboard, poker table, elk pedestals</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">11</div>
+    <div class="render">
+      <a href="assets/photos/11-hall.jpg" target="_blank" rel="noopener"><img src="assets/photos/11-hall.jpg" alt="Hall — Alder arched doors with a heavy crown header over every casing." loading="lazy"></a>
+      <h3>Hall</h3>
+      <p>Alder arched doors with a heavy crown header over every casing.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-alder-doors.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-alder-doors.jpg" alt="Finish selection — The door and casing profile" loading="lazy"></a>
+          <figcaption><span class="tag">Finish selection</span>The door and casing profile</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">12</div>
+    <div class="render">
+      <a href="assets/photos/12-bedroom.jpg" target="_blank" rel="noopener"><img src="assets/photos/12-bedroom.jpg" alt="Bedroom — Under the roof slope, window over the dry grass." loading="lazy"></a>
+      <h3>Bedroom</h3>
+      <p>Under the roof slope, window over the dry grass.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-bedroom.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-bedroom.jpg" alt="As built — The room drywalled, sloped soffit at the eave" loading="lazy"></a>
+          <figcaption><span class="tag">As built</span>The room drywalled, sloped soffit at the eave</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+  <article class="plate">
+    <div class="num">13</div>
+    <div class="render">
+      <a href="assets/photos/13-bath.jpg" target="_blank" rel="noopener"><img src="assets/photos/13-bath.jpg" alt="Bath — Multicolor slate with a river-pebble shower pan." loading="lazy"></a>
+      <h3>Bath</h3>
+      <p>Multicolor slate with a river-pebble shower pan.</p>
+    </div>
+    <div class="sources">
+      <div class="srclabel">Built from</div>
+      <div class="srcrow">
+        <figure class="src">
+          <a href="assets/sources/src-bath-tile.jpg" target="_blank" rel="noopener"><img src="assets/sources/src-bath-tile.jpg" alt="Walkthrough video — The tile and pebble pan on site" loading="lazy"></a>
+          <figcaption><span class="tag">Walkthrough video</span>The tile and pebble pan on site</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+</main>
 
 <footer>
-  Red Bank Outdoor Academy · Tehama County, California<br>
+  Red Bank Outdoor Academy &middot; Tehama County, California<br>
   Working rendering set, August 2026. Not for public distribution.
 </footer>
 
